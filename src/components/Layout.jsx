@@ -1,6 +1,5 @@
 import React, { lazy } from 'react'
 import { Outlet } from 'react-router-dom'
-import SendEmail from './SendEmail';
 
 const Navbar = lazy(() => import('./Navbar'));
 const Sidebar = lazy(() => import('./Sidebar'));
@@ -15,10 +14,6 @@ const Layout = () => {
         }}>
             <Sidebar/>
             <Outlet/>
-        </div>
-
-        <div className='absolute bottom-6 left-2'>
-            <SendEmail/>
         </div>
     </div>
   )
