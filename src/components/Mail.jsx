@@ -7,19 +7,16 @@ const Mail = ({ email }) => {
         <div className='flex gap-4 items-center relative p-3 my-1 bg-gray-200 hover:shadow-md'>
             <FaRegStar size={20} />
 
-            <span className='font-bold'>
-                {email.nameOfSender}
-            </span>
+            <span className='font-bold'>{email.nameOfSender}</span>
 
-            <span className='font-medium'>
-                {email.subject}
-            </span>
+            <span className='font-medium'>{email.subject}</span>
 
-            <span>
-                {email.message}
-            </span>
+            <span>{email.message}</span>
 
-            <MdDelete size={20} className='absolute right-6'/>
+            <div className='absolute right-6 flex gap-2 items-center'>
+                <MdDelete size={20} />
+                <span>{email.time}</span>
+            </div>
         </div>
     )
 }
