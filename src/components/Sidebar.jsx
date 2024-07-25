@@ -43,15 +43,10 @@ const Sidebar = () => {
         }
     ]
 
-    const openMailDialog = ()=>{
-        
-    }
-
     return (
         <div className='flex flex-col gap-2 justify-start w-1/12 p-2 h-full my-4'>
             <div 
                 className='flex items-center gap-4 cursor-pointer rounded-lg p-2 bg-sky-400'
-                onClick={openMailDialog}
             >
                 <LuPencil size={20} />
                 <span>Compose</span>
