@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const Login = lazy(() => import('./components/Login'));
-const SignUp = lazy(() => import('./components/SignUp'));
 const Layout = lazy(() => import('./components/Layout'));
 const Inbox = lazy(() => import('./components/Inbox'));
 const MailInfo = lazy(() => import('./components/MailInfo'));
@@ -19,7 +18,6 @@ const App = () => {
           </Route>
 
           <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<SignUp />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
