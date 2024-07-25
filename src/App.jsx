@@ -14,8 +14,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={ <Layout/>} >
-            <Route path='inbox' element={<Inbox />} />
-            <Route path='mail/:id' element={<MailInfo />} />
+            <Route path='/' element={<Inbox />} />
+            <Route path='/mail/:id' element={<MailInfo />} />
           </Route>
 
           <Route path='/login' element={<Login />} />
