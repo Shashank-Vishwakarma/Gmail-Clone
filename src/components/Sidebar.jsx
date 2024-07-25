@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdInbox } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
@@ -7,6 +7,7 @@ import { MdDrafts } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
 
 const Sidebar = () => {
+    const [sidebarElementSelected, setSidebarElementSelected] = useState(0);
 
     const boxes = [
         {
@@ -42,10 +43,14 @@ const Sidebar = () => {
     ]
 
     return (
-        <div className='flex flex-col gap-6 justify-start w-1/12 p-2 h-full my-4'>
+        <div className='flex flex-col gap-2 justify-start w-1/12 p-2 h-full my-4'>
             {
-                boxes.map((element) => (
-                    <div key={element.id} className='flex gap-4 items-center cursor-pointer'>
+                boxes.map((element, index) => (
+                    <div 
+                        key={element.id} 
+                        className={`${sidebarElementSelected===index ? 'bg-sky-400' : ''} flex gap-4 items-center cursor-pointer p-2 rounded-lg`}
+                        onClick={()=> setSidebarElementSelected(index)}
+                    >
                         {element.icon}
                         <span>{element.title}</span>
                     </div>

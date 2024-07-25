@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const MailInfo = ({ email }) => {
     return (
-        <div className='my-4 p-4 flex flex-col gap-4 border border-gray-400 bg-slate-50 rounded-md overflow-scroll'>
+        <div className='my-8 p-4 flex flex-col gap-4 border border-gray-400 bg-slate-50 rounded-md overflow-y-scroll'>
             <div className='flex flex-col gap-4 bg-slate-100 p-2'>
                 <div className='flex flex-col gap-3'>
                     <span className='mx-10 font-bold text-2xl'>Hello bro.. </span>
