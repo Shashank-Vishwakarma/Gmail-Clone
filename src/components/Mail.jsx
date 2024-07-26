@@ -1,11 +1,8 @@
 import React from 'react';
-import { MdDelete } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteEmail, setSelectedEmail } from '../redux/slice';
-import { deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../firebase/firebase';
+import { setSelectedEmail } from '../redux/slice';
 
 const Mail = ({ email }) => {
     const navigateTo = useNavigate();
@@ -14,17 +11,6 @@ const Mail = ({ email }) => {
     const openMail = () => {
         dispatch(setSelectedEmail(email));
         navigateTo(`/mail/${email.id}`);
-    }
-
-    const deleteMail = async () => {
-        try {
-            await deleteDoc(doc(db, "emails", email.id));
-
-            // remove this email from redux store
-            dispatch(deleteEmail(email?.id));
-        } catch (err) {
-            console.log(err);
-        }
     }
 
     return (
@@ -40,10 +26,6 @@ const Mail = ({ email }) => {
                 <div className='absolute right-6 flex gap-2 items-center'>
                     <span>{new Date(email?.createdAt?.seconds * 1000).toUTCString()}</span>
                 </div>
-            </div>
-
-            <div className='p-1 hover:bg-gray-300 rounded-full m-2'>
-                <MdDelete size={25} onClick={deleteMail} />
             </div>
         </div>
 
