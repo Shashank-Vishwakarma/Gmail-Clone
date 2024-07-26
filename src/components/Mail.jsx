@@ -10,7 +10,7 @@ const Mail = ({ email }) => {
 
     const openMail = () => {
         dispatch(setSelectedEmail(email));
-        navigateTo(`/mail/${email.id}`);
+        navigateTo(`/mail/${email?.id}`);
     }
 
     return (
@@ -20,9 +20,9 @@ const Mail = ({ email }) => {
                 onClick={openMail}
             >
                 <FaRegStar size={20} />
-                <span className='font-bold'>{email.nameOfSender}</span>
-                <span className='font-medium'>{email.subject}</span>
-                <span>{email.message}</span>
+                <span className='font-bold'>{email?.to}</span>
+                <span className='font-medium'>{email?.subject}</span>
+                <span>{email?.message}</span>
                 <div className='absolute right-6 flex gap-2 items-center'>
                     <span>{new Date(email?.createdAt?.seconds * 1000).toUTCString()}</span>
                 </div>
