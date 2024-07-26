@@ -54,9 +54,9 @@ const Navbar = () => {
         <IoSettingsOutline size={27} className='cursor-pointer'/>
         <PiDotsNineBold size={27} className='cursor-pointer'/>
         {
-          user ? <img src={user?.photoURL} height={27} width={27} className='rounded-full'/> : <FaUserCircle size={27} className='cursor-pointer'/>
+          user ? <img src={user?.photoURL} className='cursor-pointer rounded-full' height={27} width={27} /> : <FaUserCircle size={27} className='cursor-pointer'/>
         }
-        <IoMdLogOut size={27} onClick={handleLogout}/>
+        <IoMdLogOut size={27} onClick={handleLogout} className='cursor-pointer'/>
       </div>
     </div>
   )

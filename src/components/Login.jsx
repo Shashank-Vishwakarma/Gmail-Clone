@@ -13,7 +13,13 @@ const Login = () => {
       try {
         const response = await signInWithGooglePopup();
         
-        dispatch(setUser(response.user));
+        // make user info available globally in the project
+        dispatch(setUser({
+          displayName: response.user.displayName,
+          photoURL: response.user.photoURL,
+          email: response.user.email
+        }));
+
         navigateTo('/');
       } catch(err) {
         console.log(err);
