@@ -6,9 +6,12 @@ import { LuSendHorizonal } from "react-icons/lu";
 import { MdDrafts } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
 import { LuPencil } from "react-icons/lu";
+import { useDispatch } from 'react-redux';
+import { setOpen } from '../redux/slice';
 
 const Sidebar = () => {
     const [sidebarElementSelected, setSidebarElementSelected] = useState(0);
+    const dispatch = useDispatch();
 
     const boxes = [
         {
@@ -47,6 +50,7 @@ const Sidebar = () => {
         <div className='flex flex-col gap-2 justify-start w-1/12 p-2 h-full my-4'>
             <div 
                 className='flex items-center gap-4 cursor-pointer rounded-lg p-2 bg-sky-400'
+                onClick={()=> dispatch(setOpen(true))}
             >
                 <LuPencil size={20} />
                 <span>Compose</span>

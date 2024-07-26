@@ -2,12 +2,16 @@ import React from 'react';
 import { MdDelete } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSelectedEmail } from '../redux/slice';
 
 const Mail = ({ email }) => {
     const navigateTo = useNavigate();
+    const dispatch = useDispatch();
 
     const openMail = ()=>{
-        navigateTo(`/mail/${email.id}`)
+        dispatch(setSelectedEmail(email));
+        navigateTo(`/mail/${email.id}`);
     }
 
     return (
@@ -21,7 +25,7 @@ const Mail = ({ email }) => {
             <span>{email.message}</span>
             <div className='absolute right-6 flex gap-2 items-center'>
                 <MdDelete size={20} />
-                <span>{email.time}</span>
+                <span>{new Date(email?.createdAt?.seconds*1000).toUTCString()}</span>
             </div>
         </div>
     )

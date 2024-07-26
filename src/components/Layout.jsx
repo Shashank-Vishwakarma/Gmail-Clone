@@ -1,12 +1,13 @@
 import React, { lazy } from 'react'
 import { Outlet } from 'react-router-dom'
 import SendEmail from './SendEmail';
+import { useSelector } from 'react-redux';
 
 const Navbar = lazy(() => import('./Navbar'));
 const Sidebar = lazy(() => import('./Sidebar'));
 
 const Layout = () => {
-  const open = true;
+  const open = useSelector(store => store.appSlice.open);
 
   return (
     <div className='relative'>
