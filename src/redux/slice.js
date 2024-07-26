@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     open: false,
     emails: [],
-    selectedEmail: {}
+    selectedEmail: {},
+    searchText: ""
 };
 
 const slice = createSlice({
@@ -21,9 +22,12 @@ const slice = createSlice({
         },
         deleteEmail: (state, action)=>{
             state.emails = state.emails.filter((email)=> email.id !== action.payload);
+        },
+        setSearchText: (state, action)=>{
+            state.searchText = action.payload;
         }
     }
 });
 
-export const { setOpen, setEmails, setSelectedEmail, deleteEmail } = slice.actions;
+export const { setOpen, setEmails, setSelectedEmail, deleteEmail, setSearchText } = slice.actions;
 export default slice.reducer;
