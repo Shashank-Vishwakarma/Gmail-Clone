@@ -3,17 +3,23 @@ import { collection, getDocs, orderBy } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEmails } from '../redux/slice'
+import { Navigate } from 'react-router-dom';
 
 const Mail = lazy(() => import('./Mail'));
 
 const Inbox = () => {
     const dispatch = useDispatch();
-    const emails = useSelector(store => store.appSlice.emails);
+    const { emails } = useSelector(store => store.appSlice);
+    const { user } = useSelector(store=> store.appSlice);
 
     // emails to show in-place of original emails when user searches for an email
     const [tempEmails, setTempEmails] = useState([]);
 
     const { searchText } = useSelector(store => store.appSlice);
+
+    if(!user) {
+        return <Navigate to={'/login'} />
+    }
 
     useEffect(() => {
         const filteredEmails = emails?.filter((email) => {

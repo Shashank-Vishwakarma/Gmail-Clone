@@ -5,12 +5,14 @@ import { GoQuestion } from "react-icons/go";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import { PiDotsNineBold } from "react-icons/pi";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSearchText } from '../redux/slice'
 
 const Navbar = () => {
   const [searchInput,setSearchInput] = useState("");
   const dispatch = useDispatch();
+
+  const { user } = useSelector(store=> store.appSlice);
 
   useEffect(()=>{
     dispatch(setSearchText(searchInput));
@@ -36,7 +38,9 @@ const Navbar = () => {
         <GoQuestion size={27} className='cursor-pointer'/>
         <IoSettingsOutline size={27} className='cursor-pointer'/>
         <PiDotsNineBold size={27} className='cursor-pointer'/>
-        <FaUserCircle size={27} className='cursor-pointer'/>
+        {
+          user ? <img src={user?.photoURL} height={27} width={27} className='rounded-full'/> : <FaUserCircle size={27} className='cursor-pointer'/>
+        }
       </div>
     </div>
   )
