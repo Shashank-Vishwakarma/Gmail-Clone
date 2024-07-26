@@ -1,5 +1,5 @@
 import React, { lazy } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import SendEmail from './SendEmail';
 import { useSelector } from 'react-redux';
 

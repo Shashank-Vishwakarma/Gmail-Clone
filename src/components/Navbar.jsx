@@ -6,17 +6,32 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import { PiDotsNineBold } from "react-icons/pi";
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchText } from '../redux/slice'
+import { setSearchText, setUser } from '../redux/slice';
+import { IoMdLogOut } from "react-icons/io";
+import { auth } from '../firebase/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [searchInput,setSearchInput] = useState("");
   const dispatch = useDispatch();
+  const navigateTo = useNavigate();
 
   const { user } = useSelector(store=> store.appSlice);
 
   useEffect(()=>{
     dispatch(setSearchText(searchInput));
   }, [searchInput]);
+
+  const handleLogout = async ()=>{
+      try {
+        await auth.signOut();
+
+        dispatch(setUser(null));
+        navigateTo('/login');
+      } catch(err) {
+        console.log(err);
+      }
+  }
 
   return (
     <div className='flex items-center justify-between h-20 sticky'>
@@ -41,6 +56,7 @@ const Navbar = () => {
         {
           user ? <img src={user?.photoURL} height={27} width={27} className='rounded-full'/> : <FaUserCircle size={27} className='cursor-pointer'/>
         }
+        <IoMdLogOut size={27} onClick={handleLogout}/>
       </div>
     </div>
   )
