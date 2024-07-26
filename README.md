@@ -2,7 +2,7 @@
 - This is a simple gmail clone.
 
 ## Technologies
-1. ReactjS
+1. ReactJS
 2. TailwindCSS
 3. Firebase Firestore
 4. Firebase Google authentication
