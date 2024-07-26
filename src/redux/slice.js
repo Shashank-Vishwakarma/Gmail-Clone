@@ -18,9 +18,12 @@ const slice = createSlice({
         },
         setSelectedEmail: (state, action)=>{
             state.selectedEmail = action.payload;
+        },
+        deleteEmail: (state, action)=>{
+            state.emails = state.emails.filter((email)=> email.id !== action.payload);
         }
     }
 });
 
-export const { setOpen, setEmails, setSelectedEmail } = slice.actions;
+export const { setOpen, setEmails, setSelectedEmail, deleteEmail } = slice.actions;
 export default slice.reducer;
